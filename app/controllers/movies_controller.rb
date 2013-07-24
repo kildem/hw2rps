@@ -16,8 +16,7 @@ class MoviesController < ApplicationController
     end
     @all_ratings = Movie.all_ratings
     
-    rat = Hash[@all_ratings.map {|r| [r,0]}]
-    @selected_ratings = params[:ratings] || session[:ratings] || rat
+    @selected_ratings = params[:ratings] || session[:ratings] || Hash[@all_ratings.map {|r| [r,0]}]
 
     if params[:sort] != session[:sort]
       session[:sort] = sort
